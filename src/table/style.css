@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.react-table-header {
+  background-color: #555;
+  color: #fff;
+}
+
+.react-table-body {
+  background-color: #f3f3f3;
+}
+
+.react-table-row {
+  background-color: #f9f9f9;
+  border: 1px solid gray;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
+.react-table-row:hover {
+  background-color: #fafafa;
+}
+
+.react-table-colum:hover {
+  background-color: #fff;
+}
+
+.react-table-footer {
+  background-color: #f3f3f3;
+}
+
+.react-table-page-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid;
+  border-color: color-2;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.relative {
+  position: relative;
+}
+
+.page-item-active {
+  cursor: pointer;
+}
+
+.page-item-active:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.page-item-disabled {
+  opacity: 0.5;
+}

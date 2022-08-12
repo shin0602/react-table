@@ -1,0 +1,71 @@
+
+
+.table {
+  display: relative;
+}
+
+.tableBody {
+  display: relative;
+}
+
+.tableHeader {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tableHeaderWrap {
+  overflow: hidden;
+}
+
+.tableBody {
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.tablePaging {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 1rem; 
+}
+
+.tr {
+  display: flex;
+}
+
+.th {
+  padding: 0.5rem;
+}
+
+.td {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  height: auto;
+}
+
+.noDataWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.noDataText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
