@@ -135,7 +135,8 @@ const DataTableHeader = <T extends StaticKeyObject,>(props: DataTableHeaderProp<
 export interface DataTableProp<T extends StaticKeyObject> {
   data: T[]
   columns: Columns<T>
-  handleOnSelect?: (data: T) => void
+  handleOnRowSelect?: (data: T) => void
+  handleOnColumSelect?: (key: keyof T, data: T) => void
   handleOnSort?: (key: keyof Columns<T>, order: 'asc' | 'desc') => void | Promise<void>
   minWidth?: number
   maxHeight?: React.CSSProperties['maxHeight']
@@ -144,7 +145,6 @@ export interface DataTableProp<T extends StaticKeyObject> {
   total?: number
   page?: number
   onChangePage?: (page: number) => Promise<void>
-  bodyWrapperClassName?: string
   footerHidden?: boolean
   sortDsiable?: boolean
   customClassName?: string
@@ -178,10 +178,12 @@ const TableView = <T extends StaticKeyObject,>(
   const [colWidth, setColWidth] = React.useState<number[]>(getTableColWidth(tableWidth, props.columns))
   const customClassName = props.customClassName ?? 'react-table'
   const customClassNameBody = `${customClassName}-body`
+  // const customClassNameBodyWrapper = `${customClassName}-body-wrapper`
   const customClassNameRow = `${customClassName}-row`
   const customClassNameColum = `${customClassName}-colum`
   const customClassNameFooter = `${customClassName}-footer`
   const customClassNamePageItem = `${customClassName}-page-item`
+  const customClassNameScrollbar = `${customClassName}-scrollbar`
 
 
   // Window Resize
@@ -255,12 +257,21 @@ const TableView = <T extends StaticKeyObject,>(
     return (
       <div className={`${styles.tableBody}`}>
         {rows.map((x, i) => (
-          <div key={`tr-${i}`} className={`${styles.tr} ${customClassNameRow}`}>
+          <div
+            key={`tr-${i}`}
+            className={`${styles.tr} ${customClassNameRow}`}
+            onClick={() => {
+              if (props.handleOnRowSelect) props.handleOnRowSelect(x)
+            }}
+          >
             {(Object.keys(props.columns) as (keyof DisplayProp<T, keyof T>)[]).map((k, j) => (
               <div
                 key={`td-${i}-${j}`}
                 style={{ width: `${colWidth[j]}px` }}
                 className={`${styles.td} ${alignToClassName(props.columns[k].align)} ${customClassNameColum}`}
+                onClick={() => {
+                  if (props.handleOnColumSelect) props.handleOnColumSelect(k, x)
+                }}
               >
                 {valueToRender(props.columns[k] as DisplayProp<T, keyof T>, k, x, i)}
               </div>
@@ -290,14 +301,16 @@ const TableView = <T extends StaticKeyObject,>(
         sortDsiable={props.sortDsiable}
         customClassName={customClassName}
       />
-      <div className={`${customClassNameBody}`}>
+      <div
+        className={`${customClassNameBody} ${customClassNameScrollbar}`}
+        ref={bodyRef}
+      >
         <div
-          className={`relative ${styles.tableBody} ${props.bodyWrapperClassName}`}
+          className={`relative`}
           style={{
-            maxHeight: props.maxHeight ?? '100px',
-            minHeight: props.minHeight ?? '90px',
+            maxHeight: props.maxHeight ? '100px' : '',
+            minHeight: props.minHeight ? '90px' : '',
           }}
-          ref={bodyRef}
         >
           <div
             style={{ width: `${tableWidth}px` }}
@@ -340,7 +353,8 @@ const TableView = <T extends StaticKeyObject,>(
               className={`${customClassNamePageItem} ${pageLimit === page ? 'page-item-disabled' : 'page-item-active'}`}
               onClick={() => pageLimit === page ? null : handleOnChangePage(pageLimit)}
             >
-              {`>>`}
+              &rsaquo;
+              &rsaquo;
             </div>
           )}
         </div>

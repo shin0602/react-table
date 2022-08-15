@@ -3,15 +3,22 @@
   padding: 0;
 }
 
+.relative {
+  position: relative;
+}
+
+/* Table Header */
 .react-table-header {
   background-color: #555;
   color: #fff;
 }
 
+/* Table Body */
 .react-table-body {
   background-color: #f3f3f3;
 }
 
+/* Table Body Row */
 .react-table-row {
   background-color: #f9f9f9;
   border: 1px solid gray;
@@ -24,14 +31,17 @@
   background-color: #fafafa;
 }
 
+/* Table Body Columns */
 .react-table-colum:hover {
   background-color: #fff;
 }
 
+/* Table Footer */
 .react-table-footer {
   background-color: #f3f3f3;
 }
 
+/* Table Footer Pagination */
 .react-table-page-item {
   display: flex;
   align-items: center;
@@ -41,23 +51,6 @@
   border: 1px solid;
   border-color: color-2;
   transition: all 0.2s ease-in-out;
-}
-
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-start {
-  justify-content: flex-start;
-}
-
-.justify-end {
-  justify-content: flex-end;
-}
-
-.relative {
-  position: relative;
 }
 
 .page-item-active {
@@ -71,3 +64,41 @@
 .page-item-disabled {
   opacity: 0.5;
 }
+
+
+/* Scrollbar */
+.react-table-scrollbar {
+  overflow: overlay;
+}
+
+.react-table-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.react-table-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.react-table-scrollbar::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+.react-table-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+
+/* Value Align */
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
