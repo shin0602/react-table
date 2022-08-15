@@ -290,6 +290,11 @@ const TableView = <T extends StaticKeyObject,>(
     // setPage(page)
   }
 
+  const wrapStyle = {
+    maxHeight: props.maxHeight ?? 'auto',
+    minHeight: props.minHeight ?? 'auto',
+  }
+
   return (
     <div ref={wrappRef} className={styles.table}>
       <DataTableHeader
@@ -307,10 +312,7 @@ const TableView = <T extends StaticKeyObject,>(
       >
         <div
           className={`relative`}
-          style={{
-            maxHeight: props.maxHeight ? props.maxHeight : '',
-            minHeight: props.minHeight ? props.minHeight : '',
-          }}
+          style={wrapStyle}
         >
           <div
             style={{ width: `${parseInt(`${tableWidth}`)}px` }}
