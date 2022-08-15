@@ -308,12 +308,12 @@ const TableView = <T extends StaticKeyObject,>(
         <div
           className={`relative`}
           style={{
-            maxHeight: props.maxHeight ? '100px' : '',
-            minHeight: props.minHeight ? '90px' : '',
+            maxHeight: props.maxHeight ? props.maxHeight : '',
+            minHeight: props.minHeight ? props.minHeight : '',
           }}
         >
           <div
-            style={{ width: `${tableWidth}px` }}
+            style={{ width: `${parseInt(`${tableWidth}`)}px` }}
           >
             {props.data.length > 0 && TableBody}
           </div>
