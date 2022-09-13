@@ -287,7 +287,9 @@ const TableView = <T extends StaticKeyObject,>(
     if (props.onChangePage) {
       await props.onChangePage(page)
     }
-    // setPage(page)
+    if (props.page === undefined) {
+      setPage(page)
+    }
   }
 
   const wrapStyle = {
