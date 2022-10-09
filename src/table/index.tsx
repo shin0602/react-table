@@ -253,7 +253,7 @@ const TableView = <T extends StaticKeyObject,>(
   }, [])
 
   const TableBody = React.useMemo(() => {
-    const rows = props.page ? cloneDeep(data).splice((page - 1) * limit, limit) : data
+    const rows = props.page ? cloneDeep(data).splice((page - 1) * limit, page * limit) : data
     return (
       <div className={`${styles.tableBody}`}>
         {rows.map((x, i) => (
