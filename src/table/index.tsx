@@ -184,6 +184,7 @@ const TableView = <T extends StaticKeyObject,>(
   const customClassNameFooter = `${customClassName}-footer`
   const customClassNamePageItem = `${customClassName}-page-item`
   const customClassNameScrollbar = `${customClassName}-scrollbar`
+  const customClassNameNoData = `${customClassName}-no-data`
 
 
   // Window Resize
@@ -325,7 +326,7 @@ const TableView = <T extends StaticKeyObject,>(
 
         {props.data.length === 0 && (
           <div
-            className={styles.noDataWrap}
+            className={`${customClassNameNoData}`}
           >
             <span
               className={styles.noDataText}
